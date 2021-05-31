@@ -42,20 +42,27 @@ public class Ex4 {
 	}
 	public static List<int[]> ThreeSum(int[] arr, int target) {
 		mergeSort2(arr);
-		List<List<Integer>> a = new LinkedList<>();
-		LinkedList b = new LinkedList<>();
+		List<int[]> ans= new ArrayList<>();
+		int [] help = new int[3];
 		for(int i=0; i<arr.length-2;i++) {
-			b.add(arr[i]);
-			b.add(arr[i+1]);
-			b.add(arr[i+2]);
-			int temp = (int) b.get(0)+(int) b.get(1)+(int) b.get(2);
-			if(b.get(0)!=b.get(1)&&b.get(1)!=b.get(2)&&temp==target) {
-				a.add(b);
+			for(int j=i+1;j<arr.length;j++)
+				for(int k=j+1;j<arr.length;k++) {
+					
+				}
+			help[0]=arr[i];
+			help[1]=arr[i+1];
+			help[2]=arr[i+2];
+			int temp = help[0]+help[1]+help[2];
+			if(help[0]!=help[1]&&help[1]!=help[2]&&help[0]!=help[2]&&temp==target) {
+				ans.add(help);
 			}
-			b.clear();
+			help[0]=0;
+			help[1]=0;
+			help[2]=0;	
+			temp=0;
 		}
-		
-		return null;
+		return ans;
+	
 	}
 
 	public static void main(String[] args) {
