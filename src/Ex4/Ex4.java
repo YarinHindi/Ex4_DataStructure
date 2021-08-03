@@ -2,70 +2,132 @@ package Ex4;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+
+import javax.swing.text.html.HTMLDocument.Iterator;
 //yarin hindi
 public class Ex4 {
-	private static void merge(int[] A, int[] temp, int from, int mid, int to){
-		int a = from;
-		int i = from;
-		int j = mid + 1;
-		while (i<=mid&&j<= to){
-			if (A[i] < A[j]) {
-				temp[a++] = A[i++];
-			}
-			else {
-				temp[a++] = A[j++];
-			}
-		}
-		while (i <= mid) {
-			temp[a++] = A[i++];
-		}
-		for (i=from; i<=to; i++) {
-			A[i] = temp[i];
-		}
-	}
-	public static void mergeSort2(int[] arr){
-		int low = 0;
-		int high = arr.length - 1;
-		int[] temp = Arrays.copyOf(arr, arr.length);
-		for (int l = 1; l <= high - low; l = 2*l) {
+	private static List<int[]> functionhelper(int a[],int s,int start,int end,List<int[]> v,int j) {
+		while(start<a.length&&end>0&&start<end) {
+			if(a[start]+a[end]==s) {
+				int[] ans = new int[3];
+				ans[0]=j;
+				ans[1]=(a[start]);
+				ans[2]=(a[end]);
+				v.add(ans);
+				start++;
+				end--;
 
-			for (int i = low; i < high; i += 2*l){
-
-				int from = i;
-				int mid = i + l - 1;
-				int to = Integer.min(i + 2*l - 1, high);
-				merge(arr, temp, from, mid, to);
 			}
+			else if(a[start]+a[end]>s) {
+				end--;
+			}else if(a[start]+a[end]<s) {
+				start++;
+			}
+
 		}
+
+		return v;
+
 	}
+
 	public static List<int[]> ThreeSum(int[] arr, int target) {
-		mergeSort2(arr);
-		List<int[]> ans= new ArrayList<>();
-		int [] help = new int[3];
-		for(int i=0; i<arr.length-2;i++) {
-			for(int j=i+1;j<arr.length;j++)
-				for(int k=j+1;j<arr.length;k++) {
-					
-				}
-			help[0]=arr[i];
-			help[1]=arr[i+1];
-			help[2]=arr[i+2];
-			int temp = help[0]+help[1]+help[2];
-			if(help[0]!=help[1]&&help[1]!=help[2]&&help[0]!=help[2]&&temp==target) {
-				ans.add(help);
-			}
-			help[0]=0;
-			help[1]=0;
-			help[2]=0;	
-			temp=0;
+		HashSet<Integer> myhash = new HashSet<Integer>(); 
+		for(int i=0; i<arr.length;i++) {
+			myhash.add(arr[i]);
 		}
-		return ans;
-	
-	}
+		int[] arrans= new int[myhash.size()];
+		int p=0;
+		for(int IN:myhash) {
+			arrans[p]=IN;
+			p++;
+		}		
+		Arrays.sort(arrans);
+		List<int[]> v= new ArrayList<>();
+		List<int[]> ans= new ArrayList<>();
+		for(int i=0; i<arrans.length;i++) {
+			int j=arrans[i];
+			v=functionhelper(arrans, target-j, i+1, arrans.length-1,v,j);
+		}
+		return v;
 
-	public static void main(String[] args) {
-		// Update your code below (here you can test you solution)
 	}
+	public static int[] highestMult(int[]arr) {
+		int ans[] = new int[2];
+		int max2;
+		int min1;
+		int min2;
+		int max1 = arr[0];
+		int j=0;
+		for(int i=0; i<arr.length;i++) {
+			if(arr[i]>max1) {
+				max1=arr[i];
+				j=i;
+			}
+		}
+		arr[j]=0;
+		max2 = arr[0];
+		for(int p=0; p<arr.length;p++) {
+			if(arr[p]>max2) {
+				max2=arr[p];
+				j=p;
+			}
+
+		}
+
+		min1 = arr[0];
+
+		for(int i=0; i<arr.length;i++) {
+			if(arr[i]<min1) {
+				min1=arr[i];
+				j=i;
+			}
+		}
+		arr[j]=0;
+		min2 = arr[0];
+		for(int p=0; p<arr.length;p++) {
+			if(arr[p]< min2) {
+				min2=arr[p];
+				j=p;
+			}
+		}
+		if(max1*max2>min1*min2) {
+			ans[0]=max1;
+			ans[1]=max2;
+
+		}else {
+			ans[0]=min1;
+			ans[1]=min2;
+		}
+	
+
+	return ans;
+
 }
+
+
+public static void main(String[] args) {  
+	HashMap<Integer,Integer> myhash = new HashMap<>();
+	int [] ss = {0,0,-1,0,0,-2,3};
+	System.out.println(Arrays.toString(highestMult(ss)));
+	int target= 8;
+	//	List<int[]> ans= new ArrayList<>();
+	//	ans=ThreeSum(ss, 5);  
+	//	for(int i=0; i<ans.size();i++) {
+	//		System.out.println(Arrays.toString(ans.get(i)));
+}
+int  A = 1;
+int  B = 1;
+int  C = 1;
+int  D = 1;
+int  bs = 1;
+int anSSs=0; 
+
+}
+
+
+
+

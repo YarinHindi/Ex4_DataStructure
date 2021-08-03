@@ -108,16 +108,13 @@ public class MaxHeap {
 			for(int i=0;i<h2.size;i++) {
 				arr[i+h1.size]=h2.arr[i];
 			}
-	
-//			HeapSort(arr);
+
 			for(int i=0; i<ans.size;i++) {
 				ans.Add(arr[i]);
 			}
 			return ans;
 		}
 	
-
-
 	public static int[] getMinHeap(MaxHeap h) {
 		int [] ans = new int[h.size];
 		for(int i=0; i<h.size;i++) {
@@ -144,5 +141,7 @@ public class MaxHeap {
 //		int [] c = getMinHeap(a);
 		MaxHeap g = mergeTwoHeaps(a,b);
 		System.out.println(Arrays.toString(g.arr));
+		int[] ss= getMinHeap(g);
+		System.out.println(Arrays.toString(ss));
 	}
 }

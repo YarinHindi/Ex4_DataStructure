@@ -17,9 +17,9 @@ static Color[] colors;
 		int n = 5000;
 		colors=Ex4Utils.generateColorrray(n);
 		UnionFind uf = new UnionFind(n, ang);
-		while (Ex4Utils.getUniqueGroups(uf) != 1) {
+		while (Ex4Utils.countUniqueGroups(uf) != 1) { 
 			System.out.println(
-					"Current Angle: " + uf.angle + "\nNumber of groups: " + Ex4Utils.getUniqueGroups(uf) + " groups");
+					"Current Angle: " + uf.angle + "\nNumber of groups: " + Ex4Utils.countUniqueGroups(uf) + " groups");
 			Ex4Utils.showPoints(uf);
 			while (!(StdDraw.isKeyPressed(KeyEvent.VK_SPACE))) {
 				StdDraw.pause(100);
