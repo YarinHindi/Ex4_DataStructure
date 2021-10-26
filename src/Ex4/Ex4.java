@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.swing.text.html.HTMLDocument.Iterator;
 //yarin hindi
+//lll
 public class Ex4 {
 	private static List<int[]> functionhelper(int a[],int s,int start,int end,List<int[]> v,int j) {
 		while(start<a.length&&end>0&&start<end) {
